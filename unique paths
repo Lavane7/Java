@@ -1,0 +1,14 @@
+class Solution {
+    public int uniquePaths(int m, int n) {
+        int[] dp = new int[n];
+        Arrays.fill(dp, 1); // base case: last row has 1 path
+
+        for (int i = m - 2; i >= 0; i--) { // iterate from second last row to top
+            for (int j = n - 2; j >= 0; j--) { // iterate from second last column to left
+                dp[j] = dp[j] + dp[j + 1];
+            }
+        }
+
+        return dp[0];
+    }
+}
